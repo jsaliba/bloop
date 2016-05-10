@@ -27,7 +27,7 @@ public class TestLol extends FunctionalTestCase {
 	public void testContentType() throws Exception {
 		MuleEvent event = runFlow("bloopFlow");
 		String payload = (String) event.getMessage().getPayload();
-		assertEquals(IOUtils.toString(getClass().getResourceAsStream("lol.html")), payload);
+		assertEquals(IOUtils.toString(getClass().getClassLoader().getResourceAsStream("lol.html")), payload);
 		
 		assertEquals("text/html", event.getMessage().getOutboundProperty("Content-Type"));
 	}
